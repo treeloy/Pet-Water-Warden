@@ -57,7 +57,15 @@ void setup() {
   Serial.begin(9600);  // starts serial communications so we can debug easier
   delay(1000);        // a 1 second delay to let everything settle down!
  
- 
+  // attempt a DHCP connection:
+  Serial.println("Attempting to get an IP address using DHCP:");
+  if (!Ethernet.begin(mac)) {
+    // if DHCP fails, start with a hard-coded address:
+    Serial.println("failed to get an IP address using DHCP, trying manually");
+    Ethernet.begin(mac, ip);
+  }
+  Serial.print("My address:");
+  Serial.println(Ethernet.localIP());
  
   //Test Twitter
   Serial.println("Pet Water Warden testing twitter connection...");  

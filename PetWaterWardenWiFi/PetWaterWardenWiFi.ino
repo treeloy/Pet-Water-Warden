@@ -11,7 +11,7 @@
  
   #include <SPI.h>
   #include <WiFi.h>
-  #include <Twitter.h>
+  #include <Twitter.h> // This is the Lib from gauravg11 from Github above
  
   //Twitter info
   // Your Token to Tweet (get it from http://arduino-tweet.appspot.com/)

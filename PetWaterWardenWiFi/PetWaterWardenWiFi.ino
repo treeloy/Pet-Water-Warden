@@ -30,6 +30,7 @@
  
   //Failsafe off
   long timerA = 0;
+  int wardenFailed = 0; // Flag incase something goes wrong
  
 void setup() {
   // initialize serial communication at 9600 bits per second:
@@ -101,18 +102,19 @@ void loop(){
   int highState = 0;
  
   //Are the sensors on or off?
-  //Write states, Active Low
-  if (voltageLow >= 3.5){lowState = 0;}
-  else if (voltageLow < 3.5){lowState = 1;}
+  //Write states, values may need to be adjusted depending on your transistor 
+  //and if you are usuing extneral or the MakerShields LEDs
+  if (voltageLow >= .7){lowState = 1;}
+  else if (voltageLow < .5){lowState = 0;}
  
-  if (voltageHigh >= 3.5){highState = 0;}
-  else if (voltageHigh < 3.5){highState = 1;}
+  if (voltageHigh >= .7){highState = 1;}
+  else if (voltageHigh < .5){highState = 0;}
  
   //Turn on the pump?
-  if(highState == 1 && lowState == 1){
+  if(highState == 1 && lowState == 1 && wardenFailed == 0){
     digitalWrite(pump, LOW);
     timerA = 0;  
-  }else if(highState == 0 && digitalRead(pump) == LOW){
+  }else if(highState == 0 && digitalRead(pump) == LOW && wardenFailed == 0){
     //FailSafe Timers
     timerA = 0;
     digitalWrite(pump, HIGH);
@@ -130,6 +132,10 @@ void loop(){
     timerA = 0;
     //Either no water left or the pump didn't turn off, bad sensor?
     tweetFail();
+    wardenFailed = 1; // the Pet Warden Warden has run into trouble and failed
+    Serial.print("Something went wrong! The wardenFailed status is: ");
+    Serial.println(wardenFailed);
+    exit(0);// exit the program auntil error is fixed
     Serial.println("Either no water left or the pump didn't turn off, bad sensor?");
   }
  

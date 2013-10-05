@@ -11,7 +11,8 @@
  
   #include <SPI.h>
   #include <WiFi.h> //Included with Arduino V1.0 and higher
-  #include <Twitter.h> // This is the Lib from gauravg11 from Github above
+  #include <Twitter.h> // This is the Lib from gauravg11 on Github above, a modified
+                       // version of Arduino Tweets Twitter Lib to work with a WiFi shield
  
   //Twitter info
   // Your Token to Tweet (get it from http://arduino-tweet.appspot.com/)

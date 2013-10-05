@@ -10,7 +10,7 @@
   //Wifi Shield Twitter thanks to https://github.com/gauravg11/arduinolibs
  
   #include <SPI.h>
-  #include <WiFi.h>
+  #include <WiFi.h> //Included with Arduino V1.0 and higher
   #include <Twitter.h> // This is the Lib from gauravg11 from Github above
  
   //Twitter info

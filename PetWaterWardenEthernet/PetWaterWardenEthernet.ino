@@ -12,8 +12,8 @@
   //Ethernet Shield Version
  
   #include <SPI.h>
-  #include <Ethernet.h>    // this allows us to use the Ethernet shield easily
-  #include <Twitter.h>
+  #include <Ethernet.h>    //Included with Arduino V1.0 and higher
+  #include <Twitter.h>    //Lib from Arduino Tweet
  
   //Twitter info
   // Your Token to Tweet (get it from http://arduino-tweet.appspot.com/)

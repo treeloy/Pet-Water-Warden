@@ -106,8 +106,8 @@ void loop(){
   int highState = 0;
  
   //Are the sensors on or off?
-  //Write states, values may need to be adjusted depending on your transistor 
-  //and if you are usuing extneral or the MakerShields LEDs
+  //Write states, coltage comparison values may need to be adjusted depending on your transistor 
+  //and if you are using extneral or the MakerShields LEDs
   if (voltageLow >= .7){lowState = 1;}
   else if (voltageLow < .5){lowState = 0;}
  

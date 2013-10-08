@@ -108,11 +108,11 @@ void loop(){
   //Are the sensors on or off?
   //Write states, coltage comparison values may need to be adjusted depending on your transistor 
   //and if you are using extneral or the MakerShields LEDs
-  if (voltageLow >= .7){lowState = 1;}
-  else if (voltageLow < .5){lowState = 0;}
+  if (voltageLow >= 3.3){lowState = 0;}
+  else if (voltageLow < 3.3){lowState = 1;}
  
-  if (voltageHigh >= .7){highState = 1;}
-  else if (voltageHigh < .5){highState = 0;}
+  if (voltageHigh >= 3.3){highState = 0;}
+  else if (voltageHigh < 3.3){highState = 1;}
  
   //Turn on the pump?
   if(highState == 1 && lowState == 1 && wardenFailed == 0){
@@ -139,7 +139,7 @@ void loop(){
     wardenFailed = 1; // the Pet Warden Warden has run into trouble and failed
     Serial.print("Something went wrong! The wardenFailed status is: ");
     Serial.println(wardenFailed);
-    exit(0);// exit the program auntil error is fixed
+    exit(0);// exit the program until error is fixed
     Serial.println("Either no water left or the pump didn't turn off, bad sensor?");
   }
  

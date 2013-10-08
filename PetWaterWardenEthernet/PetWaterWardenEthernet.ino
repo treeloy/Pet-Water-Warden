@@ -149,6 +149,8 @@ void loop(){
   Serial.println(lowState);
   Serial.print("High Sensor: ");
   Serial.println(highState);
+  Serial.println(voltageLow);
+  Serial.println(voltageHigh);
  
   //Check Sensors every 10 sec
   delay(10000);

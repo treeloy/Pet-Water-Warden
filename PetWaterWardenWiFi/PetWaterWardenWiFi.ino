@@ -102,14 +102,14 @@ void loop(){
   int lowState = 0;
   int highState = 0;
  
- //Are the sensors on or off?
-  //Write states, coltage comparison values may need to be adjusted depending on your transistor 
+  //Are the sensors on or off?
+  //Write states, voltage comparison values may need to be adjusted depending on your transistor 
   //and if you are using extneral or the MakerShields LEDs
-  if (voltageLow >= .7){lowState = 1;}
-  else if (voltageLow < .5){lowState = 0;}
+  if (voltageLow >= 3.3){lowState = 0;}
+  else if (voltageLow < 3.3){lowState = 1;}
  
-  if (voltageHigh >= .7){highState = 1;}
-  else if (voltageHigh < .5){highState = 0;}
+  if (voltageHigh >= 3.3){highState = 0;}
+  else if (voltageHigh < 3.3){highState = 1;}
  
   //Turn on the pump?
   if(highState == 1 && lowState == 1 && wardenFailed == 0){
@@ -146,6 +146,8 @@ void loop(){
   Serial.println(lowState);
   Serial.print("High Sensor: ");
   Serial.println(highState);
+    Serial.println(voltageLow);
+  Serial.println(voltageHigh);
  
   //Check Sensors 10 sec
   delay(10000);
